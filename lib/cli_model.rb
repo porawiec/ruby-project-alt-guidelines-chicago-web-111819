@@ -14,12 +14,12 @@ class CommandLineInterface
         puts "Is #{@userinput_username} correct? (y/n)"
         ans = gets.chomp
         if ans == "y"
-            # if user.name exists
-                menu
-            else
-                # User.create(name: @var)
-                menu
-            end
+            # # if user.name exists
+            #     menu
+            # else
+            #     # User.create(name: @var)
+            #     menu
+            # end
         elsif ans == "n"
             input_name
         else
@@ -52,6 +52,7 @@ class CommandLineInterface
                 puts "without steamed milk"
             end
         # enumerate
+    end
 
 
     def taste
