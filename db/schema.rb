@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_04_152927) do
+ActiveRecord::Schema.define(version: 2019_12_04_214133) do
 
   create_table "coffees", force: :cascade do |t|
     t.string "ctype"
@@ -40,7 +40,6 @@ ActiveRecord::Schema.define(version: 2019_12_04_152927) do
   create_table "tastings", force: :cascade do |t|
     t.integer "user_id"
     t.integer "coffee_id"
-    t.integer "purchase"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "review_id"
