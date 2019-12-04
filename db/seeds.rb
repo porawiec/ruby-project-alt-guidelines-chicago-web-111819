@@ -13,4 +13,10 @@ Coffee.create(ctype: "Flat White", shots: 1, milk: 1, foam: 0)
 User.create(name: "John")
 User.create(name: "Alex")
 User.create(name: "Robert")
+User.create(name: "Carrie")
+User.create(name: "Allie")
+User.create(name: "Brittany")
 
+Tasting.create(user_id: john.id, coffee_id: cafe.id)
+
+Review.create(review: 5, tasting_id: taste.id, user_id: john.id, coffee_id: cafe.id)

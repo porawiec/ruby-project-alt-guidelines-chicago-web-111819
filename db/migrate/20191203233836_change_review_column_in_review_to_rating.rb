@@ -1,5 +1,5 @@
 class ChangeReviewColumnInReviewToRating < ActiveRecord::Migration[6.0]
   def change
-    change_column
+    rename_column :reviews, :review, :rating
   end
 end

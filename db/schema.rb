@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_03_205136) do
+ActiveRecord::Schema.define(version: 2019_12_04_152927) do
 
   create_table "coffees", force: :cascade do |t|
     t.string "ctype"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2019_12_03_205136) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.float "review"
+    t.float "rating"
     t.integer "tasting_id"
     t.integer "user_id"
     t.integer "coffee_id"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 2019_12_03_205136) do
     t.integer "purchase"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "review_id"
   end
 
   create_table "users", force: :cascade do |t|
