@@ -11,8 +11,6 @@ class Coffee < ActiveRecord::Base
     end
 
     def self.coffee_options
-    
-        # Coffee.all.each {|x|puts "#{x.ctype}\n stuff\n\n"}
 
         Coffee.all.each { |i|
             if i.milk == 0 && i.foam == 0

@@ -43,8 +43,9 @@ class CommandLineInterface
 
         puts "*** MAIN MENU ***"
         puts "Type '1' if you would like to see the available coffees and their contents."
-        puts "Type '2' to log a coffee under your account."
-        puts "Type '3' to view all of the reviews connected with your account"
+        puts "Type '2' to log a coffee tasting under your account."
+        puts "Type '3' to view all of the tasting experiences connected with your account"
+        puts "Type 'quit' to exit the program."
 
         selection = gets.chomp
 
@@ -52,12 +53,20 @@ class CommandLineInterface
         when selection = "1"
             wipe
             Coffee.coffee_options
+            menu
         when selection = "2"
             puts "2"
         when selection = "3"
-            puts "3"
+            wipe
+            @person.name_and_tastings
+            puts "\n\n"
+            menu
+        when selection = "quit"
+            wipe
+            exit
+
         else
-            puts `clear`
+            wipe
             puts "I'm sorry I didn't quite get that."
             puts "Please make another selection.\n\n"
             menu

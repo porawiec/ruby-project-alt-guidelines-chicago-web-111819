@@ -11,7 +11,12 @@ class User < ActiveRecord::Base
     end
 
     def name_and_tastings
-        "#{self.name} - #{self.tastings.count}\n"
+        puts "#{self.name} - #{self.tastings.count} total tasting experiences\n"
+        user_beverages
+    end
+
+    def user_beverages
+        self.coffees.each {|x| puts "#{x.ctype}"}
     end
 
     def tastes_of_coffee(coffee)
