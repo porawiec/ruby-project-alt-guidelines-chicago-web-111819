@@ -60,7 +60,7 @@ class CommandLineInterface
             puts "\n\n"
             menu
         when selection = "2"
-            puts "2"
+            taste
         when selection = "3"
             wipe
             @person.untasted_coffees
@@ -93,27 +93,28 @@ class CommandLineInterface
 
 
     def taste
-        puts "Type the corresponding number associated with the coffee you drank to log it to your account."
-        #enumerate puts coffee options - coffee_id and ctype
-        #gets.chomp the coffee_id
+        puts "Type the coffee you drank to log it to your account."
+        Coffee.all.map.with_index {|x, i| puts "#{i+1}. #{x.ctype}"}
+        ans = gets.chomp
         puts "The coffee is logged in your account."
+        puts "\n"
         like_to_leave_review
     end
 
-    def like_to_leave_review
-        puts "Would you like to leave a review for this coffee? (y/n)"
-        ans = gets.chomp
+    # def like_to_leave_review
+    #     puts "Would you like to leave a review for this coffee? (y/n)"
+    #     ans = gets.chomp
         
-        if ans == "y"
-            rating
-        elsif ans == "n"
-            # self.review = nil
-            menu
-        else
-            puts "I'm sorry I didn't quite get that."
-            like_to_leave_review
-        end
-    end
+    #     if ans == "y"
+    #         rating
+    #     elsif ans == "n"
+    #         # self.review = nil
+    #         menu
+    #     else
+    #         puts "I'm sorry I didn't quite get that."
+    #         like_to_leave_review
+    #     end
+    # end
 
     def rating
         puts "How would you rate this coffee on a scale of 0-10?"
