@@ -24,10 +24,38 @@ class User < ActiveRecord::Base
     end
 
     def untasted_coffees
-        Coffees.all - self.coffees
+        untasted = Coffee.all - self.coffees
+        puts "#{self.name} - #{untasted.count} missing tasting experiences\n"
+        untasted.each {|x| puts "#{x.ctype}"}
     end
 
+#     def update_username
+#         user = User.find_by(name: self.name)
+#         puts "Please type your new username here:"
+#         puts "or type 'quit' to return back to the main menu"
+#         new_name = gets.chomp
+# #           if User.find_by(name: new_name) == 
+#                 puts `clear`
+#                 puts "I'm afraid I can't do that."
+#                 puts "Please try again."
+#                 puts "\n"
+#                 update_username
+# #            elsif User.find_by(name: new_name) == false
+#                 user.update(name: new_name)
+#                 return
+# #            elsif new_name == "quit"
+#                 puts `clear`
+#                 return
+# #            else
+#                 puts "I'm sorry I didn't quite get that."
+#                 puts "\n"
+#                 update_username
+#             end
+#     end
 
-
+    def delete_account
+        del_user = User.find_by name: self.name
+        del_user.destroy
+    end
     
 end

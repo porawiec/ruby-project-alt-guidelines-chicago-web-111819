@@ -44,7 +44,11 @@ class CommandLineInterface
         puts "*** MAIN MENU ***"
         puts "Type '1' if you would like to see the available coffees and their contents."
         puts "Type '2' to log a coffee tasting under your account."
-        puts "Type '3' to view all of the tasting experiences connected with your account"
+        puts "Type '3' to view all of the coffees you haven't tried yet."
+        puts "Type '4' to view all of the tasting experiences connected with your account."
+        puts "Type '5' to log a review for a tasting under your account."
+        puts "Type 'update' to change your unique username."
+        puts "Type 'delete' to remove your account from the system."
         puts "Type 'quit' to exit the program."
 
         selection = gets.chomp
@@ -53,14 +57,27 @@ class CommandLineInterface
         when selection = "1"
             wipe
             Coffee.coffee_options
+            puts "\n\n"
             menu
         when selection = "2"
             puts "2"
         when selection = "3"
             wipe
+            @person.untasted_coffees
+            puts "\n\n"
+            menu
+        when selection = "4"
+            wipe
             @person.name_and_tastings
             puts "\n\n"
             menu
+        when selection = "update"
+            wipe
+            update_name
+        when selection = "delete"
+            wipe
+            cya_later
+
         when selection = "quit"
             wipe
             exit
@@ -117,8 +134,52 @@ class CommandLineInterface
         end
     end
 
-    def myreviews
-        self.tastings.all
+    def update_name
+        puts "Would you like to update your username? (y/n)"
+        ans = gets.chomp
+        
+        if ans == "y"
+            wipe
+            @person.update_username
+            menu
+        elsif ans == "n"
+            wipe
+            menu
+        else
+            puts "I'm sorry I didn't quite get that."
+            puts "\n"
+            update_name
+        end
+    end
+
+    def cya_later
+        puts "Would you like to delete your account? (y/n)"
+        ans = gets.chomp
+        
+        if ans == "y"
+            puts "Are you super duper sure you want to delete your account? (y/n)"
+            ans = gets.chomp
+            
+            if ans == "y"
+                wipe
+                @person.delete_account
+                run
+            elsif ans == "n"
+                wipe
+                menu
+            else
+                puts "I'm sorry I didn't quite get that."
+                puts "\n"
+                update_name
+            end
+        elsif ans == "n"
+            wipe
+            menu
+        else
+            puts "I'm sorry I didn't quite get that."
+            puts "\n"
+            update_name
+        end
     end
 
 
