@@ -25,8 +25,8 @@ adop1 = Tasting.create(user_id: alex.id, coffee_id: cf2.id)
 asma1 = Tasting.create(user_id: alex.id, coffee_id: cf3.id)
 
 
-jesp1r = Review.create(review: 9, tasting_id: jesp1.id, user_id: john.id, coffee_id: cf1.id)
-jdop1r = Review.create(review: 4, tasting_id: jdop1.id, user_id: john.id, coffee_id: cf2.id)
-jesp2r = Review.create(review: 7, tasting_id: taste.id, user_id: john.id, coffee_id: cf1.id)
-aesp1r = Review.create(review: 5, tasting_id: taste.id, user_id: alex.id, coffee_id: cf1.id)
-adop1r = Review.create(review: 2, tasting_id: taste.id, user_id: alex.id, coffee_id: cf2.id)
+jesp1r = Review.create(rating: 9, tasting_id: jesp1.id, user_id: john.id, coffee_id: cf1.id)
+jdop1r = Review.create(rating: 4, tasting_id: jdop1.id, user_id: john.id, coffee_id: cf2.id)
+jesp2r = Review.create(rating: 7, tasting_id: jesp2.id, user_id: john.id, coffee_id: cf1.id)
+aesp1r = Review.create(rating: 5, tasting_id: aesp1.id, user_id: alex.id, coffee_id: cf1.id)
+adop1r = Review.create(rating: 2, tasting_id: adop1.id, user_id: alex.id, coffee_id: cf2.id)

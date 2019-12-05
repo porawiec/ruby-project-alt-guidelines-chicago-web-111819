@@ -1,7 +1,9 @@
 class CommandLineInterface
 
+
+    #remove review id from tastings, coffee id and user id from reviews
     def greet
-        puts "Welcome to Coffee Reviews. Review and document your coffee intake!"
+        puts "Welcome to Paul's Coffee House. Review and document your coffee intake!"
     end
 
     def input_name
@@ -70,6 +72,7 @@ class CommandLineInterface
         if ans == "y"
             rating
         elsif ans == "n"
+            # self.review = nil
             menu
         else
             puts "I'm sorry I didn't quite get that."
@@ -104,6 +107,5 @@ class CommandLineInterface
     def run
         greet
         input_name
-        
     end
 end

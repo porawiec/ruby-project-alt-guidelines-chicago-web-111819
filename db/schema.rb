@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_04_214133) do
+ActiveRecord::Schema.define(version: 2019_12_05_003316) do
 
   create_table "coffees", force: :cascade do |t|
     t.string "ctype"
@@ -21,18 +21,9 @@ ActiveRecord::Schema.define(version: 2019_12_04_214133) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "favorites", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "coffee_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "reviews", force: :cascade do |t|
     t.float "rating"
     t.integer "tasting_id"
-    t.integer "user_id"
-    t.integer "coffee_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -42,7 +33,6 @@ ActiveRecord::Schema.define(version: 2019_12_04_214133) do
     t.integer "coffee_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "review_id"
   end
 
   create_table "users", force: :cascade do |t|
