@@ -10,21 +10,20 @@ class Coffee < ActiveRecord::Base
         tastings.map {|x| x.review}
     end
 
-        # def coffee_options
-    #     # enumerate
-    #     puts "#{coffees.id}. #{coffees.ctype} has espresso shots: #{coffees.shots}"
+    def self.coffee_options
+    
+        # Coffee.all.each {|x|puts "#{x.ctype}\n stuff\n\n"}
 
-    #         if coffees.milk == 1
-    #             puts "with steamed milk"
-    #         else
-    #             puts "without steamed milk"
-    #         end
-
-    #         if coffee.foam == 1
-    #             puts "with microfoam"
-    #         else
-    #             puts "without steamed milk"
-    #         end
-    #     # enumerate
-    # end
+        Coffee.all.each { |i|
+            if i.milk == 0 && i.foam == 0
+                puts "#{i.ctype}\n #{i.shots} espresso shot(s)\n without steamed milk\n without foam\n\n"
+            elsif i.milk == 1 && i.foam == 0
+                puts "#{i.ctype}\n #{i.shots} espresso shot(s)\n with steamed milk\n without foam\n\n"
+            elsif i.milk == 0 && i.foam == 1
+                puts "#{i.ctype}\n #{i.shots} espresso shot(s)\n without steamed milk\n with foam\n\n"
+            else i.milk == 1 && i.foam == 1
+                puts "#{i.ctype}\n #{i.shots} espresso shot(s)\n with steamed milk\n with foam\n\n"
+            end
+        }
+    end
 end

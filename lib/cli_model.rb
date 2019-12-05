@@ -40,6 +40,7 @@ class CommandLineInterface
     end
 
     def menu
+
         puts "*** MAIN MENU ***"
         puts "Type '1' if you would like to see the available coffees and their contents."
         puts "Type '2' to log a coffee under your account."
@@ -49,7 +50,8 @@ class CommandLineInterface
 
         case selection
         when selection = "1"
-            puts "1"
+            wipe
+            Coffee.coffee_options
         when selection = "2"
             puts "2"
         when selection = "3"
@@ -62,23 +64,6 @@ class CommandLineInterface
         end
     end
 
-    # def coffee_options
-    #     # enumerate
-    #     puts "#{coffees.id}. #{coffees.ctype} has espresso shots: #{coffees.shots}"
-
-    #         if coffees.milk == 1
-    #             puts "with steamed milk"
-    #         else
-    #             puts "without steamed milk"
-    #         end
-
-    #         if coffee.foam == 1
-    #             puts "with microfoam"
-    #         else
-    #             puts "without steamed milk"
-    #         end
-    #     # enumerate
-    # end
 
 
     def taste
