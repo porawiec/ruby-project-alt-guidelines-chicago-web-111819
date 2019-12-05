@@ -1,8 +1,11 @@
 class CommandLineInterface
 
-
-    #remove review id from tastings, coffee id and user id from reviews
+    def wipe
+        puts `clear`
+    end
+    
     def greet
+        wipe
         puts "Welcome to Paul's Coffee House. Review and document your coffee intake!"
     end
 
@@ -16,12 +19,18 @@ class CommandLineInterface
         puts "Is #{@userinput_username} correct? (y/n)"
         ans = gets.chomp
         if ans == "y"
-            # # if user.name exists
-            #     menu
-            # else
-            #     # User.create(name: @var)
-            #     menu
-            # end
+            if User.find_by name: @userinput_username
+                @person = User.find_by name: @userinput_username
+                wipe
+                puts "Hello #{@person.name}\n\n"
+                menu
+            else
+                User.create(name: @userinput_username)
+                @person = User.find_by name: @userinput_username
+                wipe
+                puts "Hello #{@person.name}\n\n"
+                menu
+            end
         elsif ans == "n"
             input_name
         else
@@ -31,30 +40,45 @@ class CommandLineInterface
     end
 
     def menu
-        # puts "Hello #{user.name}\n"
         puts "*** MAIN MENU ***"
-        puts "Type 'coffees' if you would like to see the available coffees and their contents."
-        puts "Type 'taste' to log a coffee under your account."
-        puts "Type 'myreviews' to view all of the reviews connected with your account"
+        puts "Type '1' if you would like to see the available coffees and their contents."
+        puts "Type '2' to log a coffee under your account."
+        puts "Type '3' to view all of the reviews connected with your account"
+
+        selection = gets.chomp
+
+        case selection
+        when selection = "1"
+            puts "1"
+        when selection = "2"
+            puts "2"
+        when selection = "3"
+            puts "3"
+        else
+            puts `clear`
+            puts "I'm sorry I didn't quite get that."
+            puts "Please make another selection.\n\n"
+            menu
+        end
     end
 
-    def coffee_options
-        # enumerate
-        puts "#{coffees.id}. #{coffees.ctype} has espresso shots: #{coffees.shots}"
+    # def coffee_options
+    #     # enumerate
+    #     puts "#{coffees.id}. #{coffees.ctype} has espresso shots: #{coffees.shots}"
 
-            if coffees.milk == 1
-                puts "with steamed milk"
-            else
-                puts "without steamed milk"
-            end
+    #         if coffees.milk == 1
+    #             puts "with steamed milk"
+    #         else
+    #             puts "without steamed milk"
+    #         end
 
-            if coffee.foam == 1
-                puts "with microfoam"
-            else
-                puts "without steamed milk"
-            end
-        # enumerate
-    end
+    #         if coffee.foam == 1
+    #             puts "with microfoam"
+    #         else
+    #             puts "without steamed milk"
+    #         end
+    #     # enumerate
+    # end
 
 
     def taste

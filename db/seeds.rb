@@ -1,5 +1,10 @@
 require_all 'lib'
 
+Coffee.destroy_all
+User.destroy_all
+Tasting.destroy_all
+Review.destroy_all
+
 cf1 = Coffee.create(ctype: "Espresso", shots: 1, milk: 0, foam: 0)
 cf2 = Coffee.create(ctype: "Doppio", shots: 2, milk: 0, foam: 0)
 cf3 = Coffee.create(ctype: "Short Macchiato", shots: 1, milk: 0, foam: 1)
@@ -7,7 +12,6 @@ cf4 = Coffee.create(ctype: "Long Macchiato", shots: 2, milk: 0, foam: 1)
 cf5 = Coffee.create(ctype: "Latte", shots: 1, milk: 1, foam: 1)
 cf6 = Coffee.create(ctype: "Cappuccino", shots: 1, milk: 1, foam: 1)
 cf7 = Coffee.create(ctype: "Flat White", shots: 1, milk: 1, foam: 0)
-
 
 
 john = User.create(name: "John")

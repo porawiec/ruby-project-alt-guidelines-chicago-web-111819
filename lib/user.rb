@@ -5,8 +5,24 @@ class User < ActiveRecord::Base
     belongs_to :coffee
 
     def self.all_tastings
-        self.all.map do |tastings|
-            self.tastings
+        self.all.map do |user|
+            user.name_and_tastings
         end
-      end
+    end
+
+    def name_and_tastings
+        "#{self.name} - #{self.tastings.count}\n"
+    end
+
+    def tastes_of_coffee(coffee)
+        self.coffees.where(coffee_id: coffee.id)
+    end
+
+    def untasted_coffees
+        Coffees.all - self.coffees
+    end
+
+
+
+    
 end
