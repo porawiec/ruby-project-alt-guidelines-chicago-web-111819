@@ -29,6 +29,18 @@ class User < ActiveRecord::Base
         untasted.each {|x| puts "#{x.ctype}"}
     end
 
+    def tie_tasting_to_coffee(coffee_name)
+        cafe_array = Coffee.all.map {|x| x.ctype}
+        if cafe_array.include? coffee_name
+            cafe = Coffee.find_by ctype: coffee_name
+            self.tastings.create(coffee_id: cafe.id)
+            puts "The coffee is logged in your account."
+        else
+            puts "I'm sorry. That coffee does not exist."
+        end
+    end
+
+
 #     def update_username
 #         user = User.find_by(name: self.name)
 #         puts "Please type your new username here:"

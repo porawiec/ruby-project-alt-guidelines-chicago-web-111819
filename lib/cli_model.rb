@@ -60,6 +60,7 @@ class CommandLineInterface
             puts "\n\n"
             menu
         when selection = "2"
+            wipe
             taste
         when selection = "3"
             wipe
@@ -96,10 +97,36 @@ class CommandLineInterface
         puts "Type the coffee you drank to log it to your account."
         Coffee.all.map.with_index {|x, i| puts "#{i+1}. #{x.ctype}"}
         ans = gets.chomp
-        puts "The coffee is logged in your account."
+        @person.tie_tasting_to_coffee(ans)
         puts "\n"
-        like_to_leave_review
+        taste_menu
     end
+
+    def taste_menu
+        puts "Enter '1' to leave a review for your recorded coffe."
+        puts "Enter '2' to log another coffee or try again if it failed."
+        puts "Enter '3' to get back to the main menu."
+
+        choice = gets.chomp
+
+        case choice
+        when choice = "1"
+             #like_to_leave_review
+             menu
+        when choice = "2"
+            wipe
+            taste
+        when choice = "3"
+            wipe
+            menu
+        else
+            wipe
+            puts "I'm sorry I didn't quite get that."
+            puts "Please make another selection.\n\n"
+            menu
+        end
+    end
+
 
     # def like_to_leave_review
     #     puts "Would you like to leave a review for this coffee? (y/n)"
