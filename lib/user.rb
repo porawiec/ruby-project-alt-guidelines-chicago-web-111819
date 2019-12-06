@@ -37,33 +37,44 @@ class User < ActiveRecord::Base
             puts "The coffee is logged in your account."
         else
             puts "I'm sorry. That coffee does not exist."
+            puts "Please enter a coffee."
+            try_again_cof = gets.chomp
+            tie_tasting_to_coffee(try_again_cof)
         end
     end
 
+    def tie_review_to_tasting(num)
+        self.reviews.create(rating: num)
+    end
 
-#     def update_username
-#         user = User.find_by(name: self.name)
-#         puts "Please type your new username here:"
-#         puts "or type 'quit' to return back to the main menu"
-#         new_name = gets.chomp
-# #           if User.find_by(name: new_name) == 
-#                 puts `clear`
-#                 puts "I'm afraid I can't do that."
-#                 puts "Please try again."
-#                 puts "\n"
-#                 update_username
-# #            elsif User.find_by(name: new_name) == false
-#                 user.update(name: new_name)
-#                 return
-# #            elsif new_name == "quit"
-#                 puts `clear`
-#                 return
-# #            else
-#                 puts "I'm sorry I didn't quite get that."
-#                 puts "\n"
-#                 update_username
-#             end
-#     end
+
+    def update_username
+        user = User.find_by(name: self.name)
+        puts "Please type your new username here"
+        puts "or type 'quit' to return back to the main menu:"
+        name_array = User.all.map {|x| x.name}
+        new_name = gets.chomp
+            if name_array.include? new_name
+                puts `clear`
+                puts "I'm afraid I can't do that."
+                puts "Please try again."
+                puts "\n"
+                update_username
+            elsif name_array.exclude? new_name
+                self.update(name: new_name)
+                puts "\n"
+                puts "You have successfully changed your name #{self.name}"
+                puts "\n"
+                return
+            elsif new_name == "quit"
+                puts `clear`
+                return
+            else
+                puts "I'm sorry I didn't quite get that."
+                puts "\n"
+                update_username
+            end
+    end
 
     def delete_account
         del_user = User.find_by name: self.name

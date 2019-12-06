@@ -103,7 +103,7 @@ class CommandLineInterface
     end
 
     def taste_menu
-        puts "Enter '1' to leave a review for your recorded coffe."
+        puts "Enter '1' to leave a review for your recorded coffee."
         puts "Enter '2' to log another coffee or try again if it failed."
         puts "Enter '3' to get back to the main menu."
 
@@ -111,8 +111,7 @@ class CommandLineInterface
 
         case choice
         when choice = "1"
-             #like_to_leave_review
-             menu
+            leave_review
         when choice = "2"
             wipe
             taste
@@ -128,37 +127,27 @@ class CommandLineInterface
     end
 
 
-    # def like_to_leave_review
-    #     puts "Would you like to leave a review for this coffee? (y/n)"
-    #     ans = gets.chomp
-        
-    #     if ans == "y"
-    #         rating
-    #     elsif ans == "n"
-    #         # self.review = nil
-    #         menu
-    #     else
-    #         puts "I'm sorry I didn't quite get that."
-    #         like_to_leave_review
-    #     end
-    # end
-
-    def rating
+    def leave_review
         puts "How would you rate this coffee on a scale of 0-10?"
-        # user.tasting.review = gets.chomp
-        rating_correct
-    end
-
-    def rating_correct
-        puts "Is #{self.tasting.review} correct? (y/n)"
+        num = gets.chomp
+        puts "Is a rating of #{num} correct? (y/n)"
+        puts "Or type 'quit' to leave without leaving a review."
         ans = gets.chomp
         if ans == "y"
+            @person.tie_review_to_tasting(num)
+            wipe
+            puts "You have successfully reviewed a coffee."
+            puts "\n"
             menu
         elsif ans == "n"
-            rating
+            wipe
+            leave_review
+        elsif ans == "quit"
+            menu
         else
             puts "I'm sorry I didn't quite get that."
-            rating_correct
+            puts "\n"
+            leave_review
         end
     end
 
