@@ -43,10 +43,9 @@ class CommandLineInterface
 
         puts "*** MAIN MENU ***"
         puts "Type '1' if you would like to see the available coffees and their contents."
-        puts "Type '2' to log a coffee tasting under your account."
+        puts "Type '2' to log a coffee tasting under your account and optional review."
         puts "Type '3' to view all of the coffees you haven't tried yet."
         puts "Type '4' to view all of the tasting experiences connected with your account."
-        puts "Type '5' to log a review for a tasting under your account."
         puts "Type 'update' to change your unique username."
         puts "Type 'delete' to remove your account from the system."
         puts "Type 'quit' to exit the program."
