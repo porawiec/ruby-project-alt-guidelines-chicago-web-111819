@@ -43,11 +43,6 @@ class User < ActiveRecord::Base
         end
     end
 
-    def tie_review_to_tasting(num)
-        self.reviews.create(rating: num)
-    end
-
-
     def update_username
         user = User.find_by(name: self.name)
         puts "Please type your new username here"

@@ -132,9 +132,10 @@ class CommandLineInterface
         num = gets.chomp
         puts "Is a rating of #{num} correct? (y/n)"
         puts "Or type 'quit' to leave without leaving a review."
+        latest_tasting = Tasting.all.last
         ans = gets.chomp
         if ans == "y"
-            @person.tie_review_to_tasting(num)
+            Review.create(rating: num, tasting_id: latest_tasting.id)
             wipe
             puts "You have successfully reviewed a coffee."
             puts "\n"
