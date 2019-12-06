@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
     end
 
     def user_beverages
-        self.coffees.each {|x| puts "#{x.ctype}"}
+        self.tastings.each {|one_tasting| puts "#{one_tasting.coffee.ctype}"}
     end
 
     def tastes_of_coffee(coffee)
